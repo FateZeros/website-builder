@@ -1,7 +1,7 @@
 /* eslint valid-jsdoc: "off" */
 'use strict'
 
-const { devConfig } = require('../database-config')
+const { devConfig } = require('../database')
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -51,27 +51,6 @@ module.exports = appInfo => {
     routerMap: true,
     enable: true
   }
-
-  // sql 配置
-  // config.sql = {
-  //   // database configuration
-  //   client: {
-  //     // host
-  //     host: devConfig.host,
-  //     // port
-  //     port: devConfig.port,
-  //     // username
-  //     user: devConfig.user,
-  //     // password
-  //     password: devConfig.password,
-  //     // database
-  //     database: devConfig.database
-  //   },
-  //   // load into app, default is open
-  //   app: true,
-  //   // load into agent, default is close
-  //   agent: false
-  // }
 
   config.sequelize = {
     dialect: 'mysql',

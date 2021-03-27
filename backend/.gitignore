@@ -15,4 +15,5 @@ typings/
 
 remarks/
 
-database-config/
+database/index.js
+database/config.json

@@ -30,9 +30,8 @@ class UserController extends Controller {
    */
   async get() {
     const { ctx, service } = this
-    const id = ctx.params.id
 
-    ctx.body = await service.user.getUser(id)
+    ctx.body = await service.user.find(ctx.helper.parseInt(ctx.params.id))
   }
 }
 

@@ -1,16 +1,18 @@
 'use strict'
 const Service = require('egg').Service
-const UUID = require('uuid')
 
 class UserService extends Service {
-  async createUser() {
-    const { ctx } = this
-    try {
-      const id = UUID.v1()
-    } catch {}
+  async create(user) {
+    return this.ctx.model.User.create(user)
   }
 
-  async getUser(id) {}
+  async getUser(id) {
+    const user = await this.ctx.model.User.findByPk(id)
+    if (!user) {
+      this.ctx.throw(404, 'user not found')
+    }
+    return user
+  }
 }
 
 module.exports = UserService
