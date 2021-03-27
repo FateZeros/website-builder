@@ -1,0 +1,26 @@
+{
+  "name": "block",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "divcss3 <5859331@gmail.com>",
+  "homepage": "https://github.com/FateZeros/website-builder#readme",
+  "license": "ISC",
+  "main": "lib/block.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FateZeros/website-builder.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/FateZeros/website-builder/issues"
+  }
+}
