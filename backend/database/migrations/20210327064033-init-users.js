@@ -12,7 +12,7 @@ module.exports = {
     const { INTEGER, DATE, STRING } = Sequelize
     await queryInterface.createTable('users', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      userName: STRING(50),
+      user_name: STRING(50),
       sex: INTEGER,
       age: INTEGER,
       email: STRING(30),

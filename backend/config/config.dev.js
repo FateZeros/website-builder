@@ -56,7 +56,9 @@ module.exports = appInfo => {
     dialect: 'mysql',
     host: devConfig.host,
     port: devConfig.port,
-    database: devConfig.database
+    database: devConfig.database,
+    username: devConfig.username,
+    password: devConfig.password
   }
 
   // add your user config here

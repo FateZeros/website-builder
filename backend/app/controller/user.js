@@ -16,7 +16,7 @@ class UserController extends Controller {
   async create() {
     const { ctx, service } = this
     const user = ctx.request.body
-    ctx.validate(ctx.rule.createUserReq, ctx.request.body)
+    ctx.validate(ctx.rule.createUserRequest, ctx.request.body)
 
     ctx.body = await service.user.createUser(user)
   }
@@ -31,7 +31,19 @@ class UserController extends Controller {
   async get() {
     const { ctx, service } = this
 
-    ctx.body = await service.user.find(ctx.helper.parseInt(ctx.params.id))
+    ctx.body = await service.user.getUser(ctx.helper.parseInt(ctx.params.id))
+  }
+
+  /**
+   * @summary 删除用户
+   * @description 删除用户信息
+   * @router delete /v1/users/{id}
+   * @request path string *id
+   * @response 200 baseResponse 删除成功
+   */
+  async del() {
+    const { ctx, service } = this
+    ctx.body = await service.user.delUser(ctx.helper.parseInt(ctx.params.id))
   }
 }
 

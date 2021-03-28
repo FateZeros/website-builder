@@ -2,14 +2,20 @@
 
 module.exports = {
   createUserRequest: {
-    userName: { type: 'string', required: true, description: '用户姓名' },
+    user_name: { type: 'string', required: true, description: '用户姓名' },
     sex: {
-      type: 'string',
+      type: 'integer',
       required: true,
-      enum: ['male', 'female'],
+      example: 0,
       description: '用户性别'
     },
-    age: { type: 'integer', required: true, min: 1, description: '年龄' },
+    age: {
+      type: 'integer',
+      required: true,
+      example: 18,
+      min: 1,
+      description: '年龄'
+    },
     email: {
       type: 'string',
       required: false,
@@ -17,7 +23,7 @@ module.exports = {
       format: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
       description: '邮箱'
     },
-    phoneNumber: {
+    phone_number: {
       type: 'string',
       required: false,
       example: '13500000002',

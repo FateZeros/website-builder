@@ -2,13 +2,12 @@
 
 module.exports = {
   getUserResponse: {
-    id: {
-      type: 'integer',
-      description: '用户ID'
+    user_name: {
+      type: 'string',
+      description: '用户姓名'
     },
     sex: {
-      type: 'string',
-      enum: ['male', 'female'],
+      type: 'integer',
       description: '用户性别'
     },
     age: { type: 'integer', description: '年龄' },
@@ -16,7 +15,7 @@ module.exports = {
       type: 'string',
       description: '邮箱'
     },
-    phoneNumber: {
+    phone_number: {
       type: 'string',
       description: '电话'
     }

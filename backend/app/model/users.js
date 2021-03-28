@@ -3,9 +3,9 @@
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize
 
-  const User = app.model.define('user', {
+  const Users = app.model.define('users', {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    userName: STRING(50),
+    user_name: STRING(50),
     sex: INTEGER,
     age: INTEGER,
     email: STRING(30),
@@ -13,5 +13,5 @@ module.exports = app => {
     updated_at: DATE
   })
 
-  return User
+  return Users
 }
