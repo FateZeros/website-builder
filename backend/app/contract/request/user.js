@@ -5,13 +5,13 @@ module.exports = {
     user_name: { type: 'string', required: true, description: '用户姓名' },
     sex: {
       type: 'integer',
-      required: true,
+      required: false,
       example: 0,
       description: '用户性别'
     },
     age: {
       type: 'integer',
-      required: true,
+      required: false,
       example: 18,
       min: 1,
       description: '年龄'

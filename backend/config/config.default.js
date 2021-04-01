@@ -2,6 +2,7 @@
 'use strict'
 
 const { devConfig } = require('../database')
+
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */

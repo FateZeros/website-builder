@@ -2,6 +2,7 @@
 'use strict'
 
 const { testConfig } = require('../database')
+
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -56,7 +57,9 @@ module.exports = appInfo => {
     dialect: 'mysql',
     host: testConfig.host,
     port: testConfig.port,
-    database: testConfig.database
+    database: testConfig.database,
+    username: testConfig.username,
+    password: testConfig.password
   }
 
   // add your user config here
