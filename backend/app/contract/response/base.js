@@ -2,7 +2,7 @@
 
 module.exports = {
   baseResponse: {
-    result: { type: 'boolean', required: true },
+    result: { type: 'string', example: '' },
     errorMsg: { type: 'string' },
     errorCode: { type: 'integer', example: 200 }
   }

@@ -17,8 +17,13 @@ class UserController extends Controller {
     const { ctx, service } = this
     const user = ctx.request.body
     ctx.validate(ctx.rule.createUserRequest, ctx.request.body)
-
-    ctx.body = await service.user.createUser(user)
+    const resUser = await service.user.createUser(user)
+    ctx.status = 200
+    ctx.body = {
+      errorCode: 200,
+      errorMsg: '创建成功',
+      result: resUser
+    }
   }
 
   /**
@@ -31,7 +36,21 @@ class UserController extends Controller {
   async get() {
     const { ctx, service } = this
 
-    ctx.body = await service.user.getUser(ctx.helper.parseInt(ctx.params.id))
+    const user = await service.user.getUser(ctx.helper.parseInt(ctx.params.id))
+    ctx.status = 200
+    if (user) {
+      ctx.body = {
+        errorCode: 200,
+        errorMsg: '',
+        result: user
+      }
+    } else {
+      ctx.body = {
+        errorCode: 400,
+        errorMsg: '没有找到用户',
+        result: null
+      }
+    }
   }
 
   /**
@@ -43,7 +62,16 @@ class UserController extends Controller {
    */
   async del() {
     const { ctx, service } = this
-    ctx.body = await service.user.delUser(ctx.helper.parseInt(ctx.params.id))
+    const delUserId = ctx.helper.parseInt(ctx.params.id)
+    await service.user.delUser(delUserId)
+    ctx.status = 200
+    ctx.body = {
+      errorCode: 200,
+      errorMsg: '删除用户成功',
+      result: {
+        id: delUserId
+      }
+    }
   }
 }
 

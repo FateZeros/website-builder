@@ -15,40 +15,40 @@ describe('test/app/controller/user.test.js', () => {
   //   })
   // })
 
-  describe('GET /v1/users/:id', () => {
-    it('should work', async () => {
-      const users = await app.factory.create('users')
-      const res = await app.httpRequest().get(`/users/${users.id}`)
-      assert(res.status === 200)
-      assert(res.body.age === users.age)
-    })
-  })
-
   describe('POST /v1/users', () => {
     it('should work', async () => {
       app.mockCsrf()
       let res = await app
         .httpRequest()
-        .post('/users')
+        .post('/v1/users')
         .send({
           age: 10,
-          name: 'name'
+          user_name: 'name'
         })
-      assert(res.status === 201)
-      assert(res.body.id)
-
-      res = await app.httpRequest().get(`/users/${res.body.id}`)
       assert(res.status === 200)
-      assert(res.body.name === 'name')
+      const resultId = res.body.result.id
+      assert(resultId)
+
+      res = await app.httpRequest().get(`/v1/users/${resultId}`)
+      assert(res.status === 200)
+      assert(res.body.result.user_name === 'name')
+    })
+  })
+
+  describe('GET /v1/users/:id', () => {
+    it('should work', async () => {
+      const users = await app.factory.create('users')
+      const res = await app.httpRequest().get(`/v1/users/${users.id}`)
+      assert(res.status === 200)
+      assert(res.body.result.age === users.age)
     })
   })
 
   describe('DELETE /v1/users/:id', () => {
     it('should work', async () => {
       const users = await app.factory.create('users')
-
       app.mockCsrf()
-      const res = await app.httpRequest().delete(`/users/${users.id}`)
+      const res = await app.httpRequest().delete(`/v1/users/${users.id}`)
       assert(res.status === 200)
     })
   })
