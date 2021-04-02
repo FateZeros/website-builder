@@ -2,7 +2,7 @@
 
 module.exports = {
   createUserRequest: {
-    user_name: { type: 'string', required: true, description: '用户姓名' },
+    userName: { type: 'string', required: true, description: '用户姓名' },
     sex: {
       type: 'integer',
       required: false,
@@ -23,7 +23,7 @@ module.exports = {
       format: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
       description: '邮箱'
     },
-    phone_number: {
+    phoneNumber: {
       type: 'string',
       required: false,
       example: '13500000002',

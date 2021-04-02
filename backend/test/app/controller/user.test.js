@@ -23,7 +23,7 @@ describe('test/app/controller/user.test.js', () => {
         .post('/v1/users')
         .send({
           age: 10,
-          user_name: 'name'
+          userName: 'name'
         })
       assert(res.status === 200)
       const resultId = res.body.result.id

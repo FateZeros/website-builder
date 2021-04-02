@@ -2,7 +2,11 @@
 
 module.exports = {
   getUserResponse: {
-    user_name: {
+    id: {
+      type: 'integer',
+      description: '用户ID'
+    },
+    userName: {
       type: 'string',
       description: '用户姓名'
     },
@@ -15,7 +19,7 @@ module.exports = {
       type: 'string',
       description: '邮箱'
     },
-    phone_number: {
+    phoneNumber: {
       type: 'string',
       description: '电话'
     }

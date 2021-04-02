@@ -11,11 +11,13 @@ class UserController extends Controller {
    * @description 创建用户，记录用户账户/密码/邮箱
    * @router post /v1/users
    * @request body createUserRequest *body
-   * @response 200 baseResponse 创建成功
+   * @response 200 getUserResponse 创建成功
    */
   async create() {
     const { ctx, service } = this
     const user = ctx.request.body
+    /* 转驼峰写法 🌶️ */
+    user.user_name = user.userName
     ctx.validate(ctx.rule.createUserRequest, ctx.request.body)
     const resUser = await service.user.createUser(user)
     ctx.status = 200
@@ -58,7 +60,7 @@ class UserController extends Controller {
    * @description 删除用户信息
    * @router delete /v1/users/{id}
    * @request path string *id
-   * @response 200 baseResponse 删除成功
+   * @response 200 getUserResponse 删除成功
    */
   async del() {
     const { ctx, service } = this

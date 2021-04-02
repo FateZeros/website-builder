@@ -4,6 +4,16 @@
     "semi": "off",
     "comma-dangle": ["error", "never"],
     "array-bracket-spacing": ["error", "never"],
-    "valid-jsdoc": "off"
+    "valid-jsdoc": [
+      "error",
+      {
+        "prefer": {},
+        "requireReturn": false,
+        "requireReturnType": false
+      }
+    ],
+    "jsdoc/check-tag-names": {
+      "definedTags": ["request", "response"]
+    }
   }
 }
