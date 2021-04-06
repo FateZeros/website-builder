@@ -59,7 +59,12 @@ module.exports = appInfo => {
     port: devConfig.port,
     database: devConfig.database,
     username: devConfig.username,
-    password: devConfig.password
+    password: devConfig.password,
+    timezone: devConfig.timezone,
+    define: {
+      // 所有驼峰命名格式化
+      underscored: false
+    }
   }
 
   // add your user config here

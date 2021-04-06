@@ -15,40 +15,40 @@ describe('test/app/controller/user.test.js', () => {
   //   })
   // })
 
-  describe('POST /v1/users', () => {
+  describe('POST /api/v1/users', () => {
     it('should work', async () => {
       app.mockCsrf()
       let res = await app
         .httpRequest()
-        .post('/v1/users')
+        .post('/api/v1/users')
         .send({
           age: 10,
           userName: 'name'
         })
       assert(res.status === 200)
-      const resultId = res.body.result.id
+      const resultId = res.body.data.id
       assert(resultId)
 
-      res = await app.httpRequest().get(`/v1/users/${resultId}`)
+      res = await app.httpRequest().get(`/api/v1/users/${resultId}`)
       assert(res.status === 200)
-      assert(res.body.result.user_name === 'name')
+      assert(res.body.data.user_name === 'name')
     })
   })
 
-  describe('GET /v1/users/:id', () => {
+  describe('GET /api/v1/users/:id', () => {
     it('should work', async () => {
       const users = await app.factory.create('users')
-      const res = await app.httpRequest().get(`/v1/users/${users.id}`)
+      const res = await app.httpRequest().get(`/api/v1/users/${users.id}`)
       assert(res.status === 200)
-      assert(res.body.result.age === users.age)
+      assert(res.body.data.age === users.age)
     })
   })
 
-  describe('DELETE /v1/users/:id', () => {
+  describe('DELETE /api/v1/users/:id', () => {
     it('should work', async () => {
       const users = await app.factory.create('users')
       app.mockCsrf()
-      const res = await app.httpRequest().delete(`/v1/users/${users.id}`)
+      const res = await app.httpRequest().delete(`/api/v1/users/${users.id}`)
       assert(res.status === 200)
     })
   })

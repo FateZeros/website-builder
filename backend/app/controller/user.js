@@ -9,7 +9,7 @@ class UserController extends Controller {
   /**
    * @summary 创建用户
    * @description 创建用户，记录用户账户/密码/邮箱
-   * @router post /v1/users
+   * @router post /api/v1/users
    * @request body createUserRequest *body
    * @response 200 getUserResponse 创建成功
    */
@@ -24,14 +24,14 @@ class UserController extends Controller {
     ctx.body = {
       errorCode: 200,
       errorMsg: '创建成功',
-      result: resUser
+      data: resUser
     }
   }
 
   /**
    * @summary 获取用户信息
    * @description 获取用户信息
-   * @router get /v1/users/{id}
+   * @router get /api/v1/users/{id}
    * @request path string *id
    * @response 200 getUserResponse 用户信息
    */
@@ -44,13 +44,13 @@ class UserController extends Controller {
       ctx.body = {
         errorCode: 200,
         errorMsg: '',
-        result: user
+        data: user
       }
     } else {
       ctx.body = {
         errorCode: 400,
         errorMsg: '没有找到用户',
-        result: null
+        data: null
       }
     }
   }
@@ -58,7 +58,7 @@ class UserController extends Controller {
   /**
    * @summary 删除用户
    * @description 删除用户信息
-   * @router delete /v1/users/{id}
+   * @router delete /api/v1/users/{id}
    * @request path string *id
    * @response 200 getUserResponse 删除成功
    */
@@ -70,7 +70,7 @@ class UserController extends Controller {
     ctx.body = {
       errorCode: 200,
       errorMsg: '删除用户成功',
-      result: {
+      data: {
         id: delUserId
       }
     }
