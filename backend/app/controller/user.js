@@ -16,16 +16,9 @@ class UserController extends Controller {
   async create() {
     const { ctx, service } = this
     const user = ctx.request.body
-    /* 转驼峰写法 🌶️ */
-    user.user_name = user.userName
     ctx.validate(ctx.rule.createUserRequest, ctx.request.body)
     const resUser = await service.user.createUser(user)
-    ctx.status = 200
-    ctx.body = {
-      errorCode: 200,
-      errorMsg: '创建成功',
-      data: resUser
-    }
+    ctx.helper.requestSucc({ ctx, errorCode: 200, data: resUser })
   }
 
   /**
@@ -37,21 +30,11 @@ class UserController extends Controller {
    */
   async get() {
     const { ctx, service } = this
-
     const user = await service.user.getUser(ctx.helper.parseInt(ctx.params.id))
-    ctx.status = 200
     if (user) {
-      ctx.body = {
-        errorCode: 200,
-        errorMsg: '',
-        data: user
-      }
+      ctx.helper.requestSucc({ ctx, errorCode: 200, data: user })
     } else {
-      ctx.body = {
-        errorCode: 400,
-        errorMsg: '没有找到用户',
-        data: null
-      }
+      ctx.helper.requestSucc({ ctx, errorCode: 400, data: null })
     }
   }
 
@@ -65,14 +48,21 @@ class UserController extends Controller {
   async del() {
     const { ctx, service } = this
     const delUserId = ctx.helper.parseInt(ctx.params.id)
-    await service.user.delUser(delUserId)
-    ctx.status = 200
-    ctx.body = {
-      errorCode: 200,
-      errorMsg: '删除用户成功',
-      data: {
-        id: delUserId
-      }
+    const delUser = await service.user.delUser(delUserId)
+    if (delUser) {
+      ctx.helper.requestSucc({
+        ctx,
+        errorCode: 200,
+        data: {
+          id: delUserId
+        }
+      })
+    } else {
+      ctx.helper.requestSucc({
+        ctx,
+        errorCode: 400,
+        data: null
+      })
     }
   }
 }
