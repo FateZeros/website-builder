@@ -2,26 +2,19 @@
 
 module.exports = {
   getUserResponse: {
-    id: {
+    errorCode: {
       type: 'integer',
-      description: '用户ID'
+      example: 200,
+      description: '错误码'
     },
-    userName: {
+    errorMsg: {
       type: 'string',
-      description: '用户姓名'
+      example: '',
+      description: '错误消息'
     },
-    sex: {
-      type: 'integer',
-      description: '用户性别'
-    },
-    age: { type: 'integer', description: '年龄' },
-    email: {
-      type: 'string',
-      description: '邮箱'
-    },
-    phoneNumber: {
-      type: 'string',
-      description: '电话'
+    data: {
+      type: 'user',
+      description: '返回信息'
     }
   }
 }

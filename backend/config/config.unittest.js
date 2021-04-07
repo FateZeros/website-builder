@@ -40,7 +40,7 @@ module.exports = appInfo => {
     dirScanner: './app/controller',
     apiInfo: {
       title: 'swagger 文档',
-      description: 'egg.js swagger-demo文档',
+      description: 'website builder swagger 文档',
       version: '1.0.0'
     },
     // 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html
@@ -59,7 +59,12 @@ module.exports = appInfo => {
     port: testConfig.port,
     database: testConfig.database,
     username: testConfig.username,
-    password: testConfig.password
+    password: testConfig.password,
+    timezone: '+08:00',
+    define: {
+      // 所有驼峰命名格式化
+      underscored: false
+    }
   }
 
   // add your user config here

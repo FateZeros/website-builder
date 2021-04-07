@@ -2,10 +2,16 @@
 
 module.exports = {
   createUserRequest: {
-    userName: { type: 'string', required: true, description: '用户姓名' },
+    userName: {
+      type: 'string',
+      required: true,
+      example: '张三',
+      description: '用户姓名'
+    },
     sex: {
       type: 'integer',
       required: false,
+      enum: [0, 1],
       example: 0,
       description: '用户性别'
     },

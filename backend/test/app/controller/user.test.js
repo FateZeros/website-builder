@@ -31,7 +31,7 @@ describe('test/app/controller/user.test.js', () => {
 
       res = await app.httpRequest().get(`/api/v1/users/${resultId}`)
       assert(res.status === 200)
-      assert(res.body.data.user_name === 'name')
+      assert(res.body.data.userName === 'name')
     })
   })
 
