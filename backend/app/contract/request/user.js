@@ -8,6 +8,12 @@ module.exports = {
       example: '张三',
       description: '用户姓名'
     },
+    password: {
+      type: 'string',
+      required: false,
+      example: 'admin123456',
+      description: '密码'
+    },
     sex: {
       type: 'integer',
       required: false,

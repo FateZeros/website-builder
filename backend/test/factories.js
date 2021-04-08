@@ -8,7 +8,8 @@ module.exports = app => {
 
   // 定义 user 和默认数据
   factory.define('users', app.model.Users, {
-    user_name: factory.sequence('Users.user_name', n => `testName_${n}`),
+    userName: factory.sequence('Users.userName', n => `testName_${n}`),
+    sex: 0,
     age: 18
   })
 }

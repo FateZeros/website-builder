@@ -22,8 +22,9 @@ describe('test/app/controller/user.test.js', () => {
         .httpRequest()
         .post('/api/v1/users')
         .send({
-          age: 10,
-          userName: 'name'
+          age: 18,
+          sex: 0,
+          userName: 'test_name'
         })
       assert(res.status === 200)
       const resultId = res.body.data.id
@@ -31,7 +32,7 @@ describe('test/app/controller/user.test.js', () => {
 
       res = await app.httpRequest().get(`/api/v1/users/${resultId}`)
       assert(res.status === 200)
-      assert(res.body.data.userName === 'name')
+      assert(res.body.data.userName === 'test_name')
     })
   })
 

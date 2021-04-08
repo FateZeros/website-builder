@@ -11,30 +11,33 @@ module.exports = app => {
     'users',
     {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      // userName: STRING(50),
       userName: {
-        type: STRING(50),
-        field: 'user_name'
+        type: STRING(50)
+        // field: 'user_name'
       },
+      password: {
+        type: STRING(20)
+      },
+      token: STRING(1024),
       sex: INTEGER,
       age: INTEGER,
       email: STRING(30),
-      // phoneNumber: STRING(30),
-      // createdAt: DATE,
-      // updatedAt: DATE
       createdAt: {
-        type: DATE,
-        field: 'created_at'
+        type: DATE
+        // field: 'created_at'
       },
       updatedAt: {
-        type: DATE,
-        field: 'updated_at'
+        type: DATE
+        // field: 'updated_at'
       }
     },
     {
       tableName: 'users',
-      // 用驼峰样式自动添加属性 underscored: false，
-      // 下划线样式 underscored: true
+      /*
+       * 添加表格属性
+       * 用驼峰样式 underscored: false，
+       * 下划线样式 underscored: true
+       */
       underscored: false
     }
   )

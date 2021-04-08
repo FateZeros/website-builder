@@ -7,6 +7,7 @@ module.exports = {
     sex: { type: 'string', description: '用户性别' },
     age: { type: 'integer', description: '年龄' },
     email: { type: 'string', description: '邮箱' },
-    phoneNumber: { type: 'string', description: '电话' }
+    phoneNumber: { type: 'string', description: '电话' },
+    token: { type: 'string', description: 'token' }
   }
 }
