@@ -2,6 +2,7 @@
 'use strict'
 
 const { devConfig } = require('../database')
+const { selfConfig } = require('./index')
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -70,6 +71,11 @@ module.exports = appInfo => {
       // 所有驼峰命名格式化
       underscored: false
     }
+  }
+
+  // jwt
+  config.jwt = {
+    secret: selfConfig.jwtSecret
   }
 
   // add your user config here

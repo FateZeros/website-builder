@@ -17,3 +17,4 @@ remarks/
 
 database/index.js
 database/config.json
+config/index.js
