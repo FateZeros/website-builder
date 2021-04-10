@@ -57,7 +57,7 @@ module.exports = appInfo => {
     // 是否自动生成route
     routerMap: true,
     enable: true,
-    enableSecurity: false,
+    enableSecurity: true,
     securityDefinitions: {
       apikey: {
         type: 'apiKey',
@@ -86,8 +86,10 @@ module.exports = appInfo => {
   config.jwt = {
     secret: selfConfig.jwtSecret,
     enable: true,
-    // 不需要验证的接口
-    ignore: ['/hello', '/', '/api/v1/login', '/api/v1/register']
+    // match 和 ignore 不可同时存在 /api/v1/* 不包含 login/register
+    match: /^\/api\/v1\/(?!(login|register))/
+    // 不需要验证的接口,
+    // ignore: ['/api/v1/login', '/api/v1/register']
   }
 
   // add your user config here

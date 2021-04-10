@@ -9,10 +9,10 @@ describe('test/app/controller/home.test.js', () => {
   //   // const ctx = app.mockContext({});
   //   // yield ctx.service.xx();
   // })
-  it('should GET /', () => {
+  it('should GET /hello', () => {
     return app
       .httpRequest()
-      .get('/')
+      .get('/hello')
       .expect('hi, egg')
       .expect(200)
   })

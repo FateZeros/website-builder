@@ -11,6 +11,7 @@ class UserController extends Controller {
    * @description 创建用户，记录用户账户/密码/邮箱
    * @router post /api/v1/users
    * @request header string Authorization
+   * @apikey
    * @request body createUserRequest *body
    * @response 200 getUserResponse 创建成功
    */
@@ -27,6 +28,7 @@ class UserController extends Controller {
    * @description 获取用户信息
    * @router get /api/v1/users/{id}
    * @request header string Authorization
+   * @apikey
    * @request path string *id
    * @response 200 getUserResponse 用户信息
    */
@@ -45,6 +47,7 @@ class UserController extends Controller {
    * @description 删除用户信息
    * @router delete /api/v1/users/{id}
    * @request header string Authorization
+   * @apikey
    * @request path string *id
    * @response 200 getUserResponse 删除成功
    */
