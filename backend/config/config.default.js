@@ -56,7 +56,15 @@ module.exports = appInfo => {
     schemes: ['http', 'https'],
     // 是否自动生成route
     routerMap: true,
-    enable: true
+    enable: true,
+    enableSecurity: false,
+    securityDefinitions: {
+      apikey: {
+        type: 'apiKey',
+        name: 'Authorization',
+        in: 'header'
+      }
+    }
   }
 
   // sequelize
@@ -76,7 +84,10 @@ module.exports = appInfo => {
 
   // jwt
   config.jwt = {
-    secret: selfConfig.jwtSecret
+    secret: selfConfig.jwtSecret,
+    enable: true,
+    // 不需要验证的接口
+    ignore: ['/hello', '/', '/api/v1/login', '/api/v1/register']
   }
 
   // add your user config here

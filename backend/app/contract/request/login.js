@@ -22,7 +22,8 @@ module.exports = {
     email: {
       type: 'string',
       required: true,
-      description: '邮箱'
+      description: '邮箱',
+      format: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
     }
   }
 }

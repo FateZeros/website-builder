@@ -6,10 +6,10 @@
  * verb('routerName', 'pathMatch', controller)
  */
 module.exports = app => {
-  const { router, controller } = app
-  router.get('/', controller.home.index)
+  const { router, controller, jwt } = app
+  router.get('/hello', controller.home.index)
   // user
-  router.resources('users', '/users', controller.user)
+  router.resources('users', '/users', jwt, controller.user)
 
   // login
   router.post('login', '/login', controller.login)

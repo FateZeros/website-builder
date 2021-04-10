@@ -21,10 +21,14 @@ class LoginController extends Controller {
     const loginParams = ctx.request.body
     const errors = app.validator.validate(ctx.rule.loginRequest, loginParams)
     if (errors) {
-      ctx.helper.requestSucc({ ctx, errorCode: 400, data: errors })
+      ctx.helper.requestFail({ ctx, errorCode: 400, data: errors })
     } else {
       const loginUser = await service.login.login(loginParams)
-      ctx.helper.requestSucc({ ctx, errorCode: 200, data: loginUser })
+      if (loginUser.code) {
+        ctx.helper.requestFail({ ctx, errorCode: 200, data: loginUser })
+      } else {
+        ctx.helper.requestSucc({ ctx, errorCode: 200, data: loginUser })
+      }
     }
   }
 
@@ -43,10 +47,15 @@ class LoginController extends Controller {
       registerParams
     )
     if (errors) {
-      ctx.helper.requestSucc({ ctx, errorCode: 400, data: errors })
+      ctx.helper.requestFail({ ctx, errorCode: 400, data: errors })
     } else {
       const registerUser = await service.login.register(registerParams)
-      ctx.helper.requestSucc({ ctx, errorCode: 200, data: registerUser })
+      // 注册发现有错误码时
+      if (registerUser.code) {
+        ctx.helper.requestFail({ ctx, errorCode: 400, data: registerUser })
+      } else {
+        ctx.helper.requestSucc({ ctx, errorCode: 200, data: registerUser })
+      }
     }
   }
 }
