@@ -1,12 +1,12 @@
 # back-end
 
-## QuickStart
+## 开始开始
 
 ```bash
 cd back-end && npm init egg --type=simple
 ```
 
-### Development
+### 开发环境
 
 ```bash
 npm i
@@ -14,7 +14,7 @@ npm run dev
 open http://localhost:7001/
 ```
 
-### Deploy
+### 部署
 
 ```bash
 npm start
